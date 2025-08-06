@@ -2,6 +2,7 @@ import React from 'react'
 import { assets } from '../../assets/assets'
 import SearchBar from './SearchBar'
 import Companies from './Companies'
+import CoursesSection from './CoursesSection'
 
 const Hero = () => {
   return (
@@ -14,6 +15,7 @@ const Hero = () => {
 
       <SearchBar/>
       <Companies/>
+      <CoursesSection/>
     </div>
 
 
