@@ -98,12 +98,45 @@ const AddCourse = () => {
           <div className="flex justify-center items-center bg-blue-100 p-2 rounded-lg cursor-pointer">+ Add Chapter</div>
           {
             showPopup && (
-              <div>
+              <div className='flex justify-center items-center bg-blue-100 p-2 rounded-lg cursor-pointer'>
+                <div className="bg-white text-gray-700 p-4 rounded relative w-full max-w-80">
+                  <h2 className="text-lg font-semibold mb-4">Add Lecture</h2>
+
+                  <div className="mb-2">
+                    <p>Lecture Title</p>
+                    <input type="text" name="" id="" className="mt-1 block w-full border rounded py-1 px-2" onChange={(e) => setLectureDetails({...lectureDetails, lectureTitle: e.target.value})} value={lectureDetails.lectureTitle}/>
+                  </div>
+
+                  <div className="mb-2">
+                    <p>Duration (minutes)</p>
+                    <input type="number" name="" id="" className="mt-1 block w-full border rounded py-1 px-2" 
+                    onChange={(e) => setLectureDetails({...lectureDetails, lectureDuration: e.target.value})} 
+                    value={lectureDetails.lectureDuration}/>
+                  </div>
+                  
+                  <div className="mb-2">
+                    <p>Lecture URL</p>
+                    <input type="text" name="" id="" className="mt-1 block w-full border rounded py-1 px-2" 
+                    onChange={(e) => setLectureDetails({...lectureDetails, lectureUrl: e.target.value})} 
+                    value={lectureDetails.lectureUrl}/>
+                  </div>
+                  
+                  <div className="flex gap-2 my-4">
+                    <p>Is Preview Free?</p>
+                    <input type="checkbox" name="" id="" className="mt-1 scale-125" 
+                    checked={lectureDetails.isPreviewFree}
+                    onChange={(e) => setLectureDetails({...lectureDetails, isPreviewFree: e.target.value})} 
+                    />
+                  </div>
+                  <button type="button" className="w-full bg-blue-400 text-white px-4 py-2 rounded">Add</button>
+                  <img onClick={() => setShowPopup(false)} src={assets.cross_icon} className="absolute top-4 right-4 w-4 cursor-pointer" alt="" />
+                </div>
                 
               </div>
             )
           }
         </div>
+        <button type="submit" className="bg-black text-white w-max py-2.5 px-8 rounded my-4">ADD</button>
       </form>
   </div>
   );
