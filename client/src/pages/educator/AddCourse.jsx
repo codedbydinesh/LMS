@@ -23,6 +23,29 @@ const AddCourse = () => {
   });
 
 
+  const handleChapter = (action, chapterId) => {
+    if(action === 'add'){
+      const title = prompt('Enter Chapter Name:');
+      if(title){
+        const newChapter = {
+          chapterId: uniqid(),
+          chapterTitle:title,
+          chapterContent: [],
+          collapsed: false,
+          chapterOrder: chapters.length > 0 ? chapters.slice(-1)[0].chapterOrder + 1 : 1,
+        }
+        setChapters([...chapters, newChapter]);
+      }
+    }else if(action === 'remove'){
+      setChapters(chapters.filter((chapter) => chapter.chapterId !== chapterId))
+    }else if(action === 'toggle'){
+      setChapters(
+        chapters.map((chapter) => chapter.chapterId === chapterId ? {...chapter, collapsed: !chapterId.collapsed} : chapter)
+      )
+    }
+  }
+
+
   useEffect(()=>{
     // Initiate Quill only once
       quillRef.current = new Quill(editorRef.current,{
@@ -31,7 +54,7 @@ const AddCourse = () => {
   },[])
 
   return (
-  <div className="h-screen overflow-hidden flex flex-col items-start justify-between md:p-8 md:pb-0 p-4 pt-8 pb-0">
+  <div className="h-screen overflow-auto flex flex-col items-start justify-between md:p-8 md:pb-0 p-4 pt-8 pb-0">
       <form action="" className="flex flex-col gap-4 max-w-md w-full text-gray-500">
         <div className="flex flex-col gap-1">
           <p>Course Title</p>
@@ -95,7 +118,7 @@ const AddCourse = () => {
               </div>
             ))
           }
-          <div className="flex justify-center items-center bg-blue-100 p-2 rounded-lg cursor-pointer">+ Add Chapter</div>
+          <div className="flex justify-center items-center bg-blue-100 p-2 rounded-lg cursor-pointer" onClick={() => handleChapter('add')}>+ Add Chapter</div>
           {
             showPopup && (
               <div className='flex justify-center items-center bg-blue-100 p-2 rounded-lg cursor-pointer'>
