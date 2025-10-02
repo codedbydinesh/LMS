@@ -1,5 +1,5 @@
 import React from "react"
-import { Route, Router, Routes, useMatch } from "react-router-dom"
+import { Route, Routes, useMatch } from "react-router-dom"
 import Home from "./pages/student/Home"
 import CoursesList from "./pages/student/CoursesList"
 import CourseDetails from "./pages/student/CourseDetails"
@@ -12,6 +12,9 @@ import AddCourse from "./pages/educator/AddCourse"
 import MyCourses from "./pages/educator/MyCourses"
 import StudentEnrolled from "./pages/educator/StudentEnrolled"
 import Navbar from "./components/student/Navbar"
+import "quill/dist/quill.snow.css";
+
+
 function App() {
   
   const isEducatorRoute = useMatch('/educator/*')
@@ -31,7 +34,7 @@ function App() {
       {/* Educator routes  */}
 
         <Route path='/educator' element={<Educator/>}>
-          <Route path='educator' element={<Dashboard/>}/>
+          <Route index element={<Dashboard/>}/>
           <Route path='add-course' element={<AddCourse/>}/>
           <Route path='my-courses' element={<MyCourses/>}/>
           <Route path='student-enrolled' element={<StudentEnrolled/>}/>
