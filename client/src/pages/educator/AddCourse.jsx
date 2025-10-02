@@ -162,8 +162,8 @@ const AddCourse = () => {
           <div className="flex justify-center items-center bg-blue-100 p-2 rounded-lg cursor-pointer" onClick={() => handleChapter('add')}>+ Add Chapter</div>
           {
             showPopup && (
-              <div className='flex justify-center items-center bg-blue-100 p-2 rounded-lg cursor-pointer'>
-                <div className="bg-white text-gray-700 p-4 rounded relative w-full max-w-80">
+              <div className='fixed inset-0 flex items-center justify-center bg-gray-800/50'>
+                <div className="bg-white text-gray-700 p-4 rounded relative w-full max-w-[20rem]">
                   <h2 className="text-lg font-semibold mb-4">Add Lecture</h2>
 
                   <div className="mb-2">
@@ -187,12 +187,13 @@ const AddCourse = () => {
                   
                   <div className="flex gap-2 my-4">
                     <p>Is Preview Free?</p>
-                    <input type="checkbox" name="" id="" className="mt-1 scale-125" 
+                    <input type="checkbox" name="" id="" className="mt-1 scale-125 cursor-pointer" 
                     checked={lectureDetails.isPreviewFree}
-                    onChange={(e) => setLectureDetails({...lectureDetails, isPreviewFree: e.target.value})} 
+                    onChange={(e) => setLectureDetails({...lectureDetails, isPreviewFree: e.target.checked})} 
                     />
                   </div>
-                  <button type="button" className="w-full bg-blue-400 text-white px-4 py-2 rounded" onClick={addLecture}>Add</button>
+                  <button type="button" className="w-full bg-blue-400 text-white px-4 py-2 rounded cursor-pointer" onClick={addLecture}>Add</button>
+                  
                   <img onClick={() => setShowPopup(false)} src={assets.cross_icon} className="absolute top-4 right-4 w-4 cursor-pointer" alt="" />
                 </div>
                 
@@ -200,7 +201,7 @@ const AddCourse = () => {
             )
           }
         </div>
-        <button type="submit" className="bg-black text-white w-max py-2.5 px-8 rounded my-4">ADD</button>
+        <button type="submit" className="bg-black text-white w-max py-2.5 px-8 rounded my-4 cursor-pointer">ADD</button>
       </form>
   </div>
   );
