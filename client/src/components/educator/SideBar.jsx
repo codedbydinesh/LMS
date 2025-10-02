@@ -8,7 +8,7 @@ const SideBar = () => {
   const {isEducator} = useContext(AppContext)
 
   const menuItems = [
-    { name: "Dashboard", path: "educator", icon: assets.home_icon },
+    { name: "Dashboard", path: "/educator", icon: assets.home_icon },
     { name: "Add Course", path: "/educator/add-course", icon: assets.add_icon },
     {
       name: "My Courses",
